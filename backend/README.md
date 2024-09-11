@@ -11,7 +11,7 @@ Backend для [пак.укр](https://пак.укр).
 - Docker Compose
 
 ```shell
-cp .env.example .env # заповнити
+cp .env.example .env
 npm install
 docker-compose up -d
 npm run dev/db:main:migrate
