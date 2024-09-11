@@ -1,0 +1,43 @@
+{
+  "name": "pak-ukr-backend",
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "script": "node --env-file=.env --",
+    "build": "tsc",
+    "build/api:run": "node --env-file=.env build/services/api/pak_api.js",
+    "build/db:main:knex": "node --env-file=.env ./node_modules/.bin/knex --knexfile ./build/database/main/knexfile.ts --knexpath ./build/database/main/",
+    "build/db:main:migrate": "node --env-file=.env ./node_modules/.bin/knex --knexfile ./build/database/main/knexfile.ts --knexpath ./build/database/main/ migrate:latest",
+    "build/db:main:rollback": "node --env-file=.env ./node_modules/.bin/knex --knexfile ./build/database/main/knexfile.ts --knexpath ./build/database/main/ migrate:rollback",
+    "dev/script": "tsx --env-file=.env --",
+    "dev/api:run": "tsx watch --env-file=.env services/api/pak_api.ts",
+    "dev/db:main:knex": "tsx --env-file=.env ./node_modules/.bin/knex --knexfile ./database/main/knexfile.ts --knexpath ./database/main/",
+    "dev/db:main:migrate": "tsx --env-file=.env ./node_modules/.bin/knex --knexfile ./database/main/knexfile.ts --knexpath ./database/main/ migrate:latest",
+    "dev/db:main:rollback": "tsx --env-file=.env ./node_modules/.bin/knex --knexfile ./database/main/knexfile.ts --knexpath ./database/main/ migrate:rollback"
+  },
+  "author": "kohutd",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "@kitajs/html": "^3.1.2",
+    "@kitajs/ts-html-plugin": "^1.3.4",
+    "@storinka/invoke": "^0.52.0",
+    "@types/dompurify": "^3.0.5",
+    "@types/jsdom": "^21.1.6",
+    "axios": "^1.7.2",
+    "bcrypt": "^5.1.1",
+    "dompurify": "^3.1.4",
+    "jsdom": "^24.0.0",
+    "knex": "^3.1.0",
+    "marked": "^12.0.2",
+    "pg": "^8.11.5"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/node": "^20.12.12",
+    "@types/pg": "^8.11.6",
+    "prettier": "^3.2.5",
+    "tsx": "^4.10.5",
+    "typescript": "^5.4.5"
+  }
+}

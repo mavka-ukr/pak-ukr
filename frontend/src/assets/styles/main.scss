@@ -1,0 +1,163 @@
+@import 'floating-vue/dist/style.css';
+
+.v-popper--theme-dropdown .v-popper__inner {
+  background: #fff;
+  color: black;
+  border-radius: 0;
+  border: 1px solid rgb(var(--ui-border-rgb));
+  box-shadow: 0 3px 6px rgb(var(--ui-border-rgb));
+}
+
+.v-popper--theme-dropdown .v-popper__arrow-inner {
+  visibility: visible;
+  border-color: #fff;
+}
+
+.v-popper--theme-dropdown .v-popper__arrow-outer {
+  border-color: rgb(var(--ui-border-rgb));
+}
+
+.v-popper__popper {
+  transition: none !important;
+}
+
+.material-symbols-rounded {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" -25, "opsz" 48;
+}
+
+.material-symbols-rounded.filled {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" -25, "opsz" 48;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --ui-bg-rgb: 250, 251, 252;
+  --ui-border-rgb: 229, 231, 235;
+}
+
+html {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  font-family: Rubik, sans-serif;
+  color: black;
+  background-color: rgba(var(--ui-primary-transparent-button-rgb), 0.025);
+
+  @media (max-width: 1024px) {
+    background-color: white;
+  }
+}
+
+body, #app {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+button, input, textarea, select {
+  font-family: Rubik, sans-serif;
+}
+
+input:not([type="checkbox"]):not([type="radio"]), textarea {
+  padding: 0.75rem;
+  border: 1px solid rgb(var(--ui-border-rgb));
+  //border-radius: .6rem;
+  width: 100%;
+  resize: vertical;
+  background: white;
+  font-size: 1rem;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):focus, textarea:focus {
+  outline: none;
+  border-color: #000;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+#app {
+  overflow-x: hidden;
+}
+
+.UiContentWrapper {
+  background-color: white;
+  border-left: 1px solid rgb(var(--ui-border-rgb));
+  border-right: 1px solid rgb(var(--ui-border-rgb));
+  border-bottom: 1px solid rgb(var(--ui-border-rgb));
+
+  @media (max-width: 1024px) {
+    border: none;
+  }
+}
+
+.PageBlock + .PageBlock {
+  border-top: 1px solid rgb(var(--ui-border-rgb));
+}
+
+.PageBlock {
+  padding: 1rem;
+  
+  &.paddingless {
+    padding: 0;
+  }
+
+  &.empty { 
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+    color: #666;
+  }
+}
+
+.PageGrid {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+  height: 100%;
+
+  .PageGridRight {
+    border-left: 1px solid rgb(var(--ui-border-rgb));
+  }
+
+  .PageGridButton {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid rgb(var(--ui-border-rgb));
+    background-color: white;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgb(var(--ui-border-rgb));
+    }
+  }
+
+  .PageGridButton + .PageGridButton {
+    margin-top: 0.5rem;
+  }
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+
+    .PageGridRight {
+      border-left: none;
+      grid-row: 1;
+    }
+
+    .PageGridLeft {
+      border-top: 1px solid rgb(var(--ui-border-rgb));
+      grid-row: 2;
+    }
+  }
+}

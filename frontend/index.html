@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Пак</title>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet" />
+  <style>
+      html {
+          background-color: rgba(var(--ui-primary-transparent-button-rgb), 0.025);
+      }
+
+      .app-loading {
+          position: fixed;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+      }
+
+      .app-loading > svg {
+          width: 200px;
+          height: 200px;
+      }
+
+      .app-loading > svg {
+          animation: app-loading-svg-anim 1s cubic-bezier(0.4, 0.2, 0.2, 1) infinite;
+      }
+
+      .app-loading > svg path:nth-child(1) {
+          animation: app-loading-path-1-anim 1s cubic-bezier(0.4, 0.2, 0.2, 1) infinite;
+      }
+
+      .app-loading > svg path:nth-child(2) {
+          animation: app-loading-path-2-anim 1s cubic-bezier(0.4, 0.2, 0.2, 1) infinite;
+      }
+
+      .app-loading > svg path:nth-child(3) {
+          animation: app-loading-path-3-anim 1s cubic-bezier(0.4, 0.2, 0.2, 1) infinite;
+      }
+
+      .app-loading > svg path:nth-child(4) {
+          animation: app-loading-path-4-anim 1s cubic-bezier(0.4, 0.2, 0.2, 1) infinite;
+      }
+
+      @keyframes app-loading-path-1-anim {
+          0% {
+              fill-opacity: 0.5;
+              transform: matrix(0.880307 0.474405 -0.872541 0.488541 356.583 49.8717);
+          }
+          50% {
+              fill-opacity: 1;
+              transform: matrix(0.880307 0.474405 -0.872541 0.488541 356.583 49.8717);
+          }
+          100% {
+              fill-opacity: 0.5;
+              transform: matrix(0.880307 0.474405 -0.872541 0.488541 356.583 49.8717);
+          }
+      }
+
+      @keyframes app-loading-path-2-anim {
+          0% {
+              fill-opacity: 0.5;
+              transform: matrix(0.872541 -0.488541 0.880307 0.474405 0.176758 147.775);
+          }
+          50% {
+              fill-opacity: 1;
+              transform: matrix(0.872541 -0.488541 0.880307 0.474405 0.176758 147.775);
+          }
+          100% {
+              fill-opacity: 0.5;
+              transform: matrix(0.872541 -0.488541 0.880307 0.474405 0.176758 147.775);
+          }
+      }
+
+      @keyframes app-loading-path-3-anim {
+          0% {
+              fill-opacity: 0.5;
+              transform: matrix(0.880307 0.474405 -0.872541 0.488541 264.042 6.10352e-05);
+          }
+          50% {
+              fill-opacity: 1;
+              transform: matrix(0.880307 0.474405 -0.872541 0.488541 264.042 6.10352e-05);
+          }
+          100% {
+              fill-opacity: 0.5;
+              transform: matrix(0.880307 0.474405 -0.872541 0.488541 264.042 6.10352e-05);
+          }
+      }
+
+      @keyframes app-loading-path-4-anim {
+          0% {
+              fill-opacity: 0.5;
+              transform: matrix(0.872541 -0.488541 0.880307 0.474405 176.027 49.2796);
+          }
+          50% {
+              fill-opacity: 1;
+              transform: matrix(0.872541 -0.488541 0.880307 0.474405 176.027 49.2796);
+          }
+          100% {
+              fill-opacity: 0.5;
+              transform: matrix(0.872541 -0.488541 0.880307 0.474405 176.027 49.2796);
+          }
+      }
+  </style>
+
+  <style>
+      :root {
+          --ui-black-rgb: 0, 0, 0;
+          --ui-black-hover-rgb: 10, 10, 10;
+          --ui-black-pressed-rgb: 0, 0, 0;
+          --ui-black-text-rgb: 255, 255, 255;
+          --ui-black-transparent-button-rgb: 0, 0, 0;
+
+          --ui-blue-rgb: 72, 92, 176;
+          --ui-blue-hover-rgb: 82, 102, 186;
+          --ui-blue-pressed-rgb: 62, 82, 166;
+          --ui-blue-text-rgb: 255, 255, 255;
+          --ui-blue-transparent-button-rgb: 72, 92, 176;
+
+          --ui-yellow-rgb: 243, 215, 75;
+          --ui-yellow-hover-rgb: 253, 225, 85;
+          --ui-yellow-pressed-rgb: 233, 205, 65;
+          --ui-yellow-text-rgb: 0, 0, 0;
+          --ui-yellow-transparent-button-rgb: 143, 115, 0;
+
+          --ui-red-rgb: 179, 39, 26;
+          --ui-red-hover-rgb: 189, 49, 36;
+          --ui-red-pressed-rgb: 169, 29, 16;
+          --ui-red-text-rgb: 255, 255, 255;
+          --ui-red-transparent-button-rgb: 179, 39, 26;
+
+          --ui-primary-rgb: 72, 92, 176;
+          --ui-primary-hover-rgb: 82, 102, 186;
+          --ui-primary-pressed-rgb: 62, 82, 166;
+          --ui-primary-text-rgb: 255, 255, 255;
+          --ui-primary-transparent-button-rgb: 72, 92, 176;
+      }
+  </style>
+
+  <script>
+    window.__randomize_color__ = function() {
+      const randomColorName = () => {
+        const colors = ["black", "blue", "yellow", "red"];
+        return colors[Math.floor(Math.random() * colors.length)];
+      };
+      const colorName = randomColorName();
+      document.documentElement.style.setProperty("--layout-primary-rgb", `var(--ui-${colorName}-rgb)`);
+      document.documentElement.style.setProperty("--layout-primary-hover-rgb", `var(--ui-${colorName}-hover-rgb)`);
+      document.documentElement.style.setProperty("--layout-primary-pressed-rgb", `var(--ui-${colorName}-pressed-rgb)`);
+      document.documentElement.style.setProperty("--layout-primary-text-rgb", `var(--ui-${colorName}-text-rgb)`);
+      document.documentElement.style.setProperty("--layout-primary-transparent-button-rgb", `var(--ui-${colorName}-transparent-button-rgb)`);
+    };
+    window.__randomize_color__();
+  </script>
+</head>
+<body>
+<div id="app">
+  <div class="app-loading">
+    <svg
+      width="542"
+      height="298"
+      viewBox="0 0 542 298"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        transform="matrix(0.880307 0.474405 -0.872541 0.488541 356.583 49.8717)"
+        fill="#B3271A"
+        fill-opacity="0.5"
+        d="M0 0h105.124v302.612H0Z"
+      ></path>
+      <path
+        transform="matrix(0.872541 -0.488541 0.880307 0.474405 0.176758 147.775)"
+        fill="#F3D74B"
+        fill-opacity="0.5"
+        d="M0 0h100.871v315.373H0Z"
+      ></path>
+      <path
+        transform="matrix(0.880307 0.474405 -0.872541 0.488541 264.042 6.10352e-05)"
+        fill="black"
+        fill-opacity="0.5"
+        d="M0 0h105.124v302.612H0Z"
+      ></path>
+      <path
+        transform="matrix(0.872541 -0.488541 0.880307 0.474405 176.027 49.2796)"
+        fill="#375BB6"
+        fill-opacity="0.5"
+        d="M0 0h100.871v315.373H0Z"
+      ></path>
+    </svg>
+  </div>
+</div>
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>

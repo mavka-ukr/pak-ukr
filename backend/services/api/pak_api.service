@@ -1,0 +1,16 @@
+[Unit]
+Description=Pak API Service
+After=postgresql.target
+After=redis-server.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=pak
+WorkingDirectory=/home/pak/pak-backend
+ExecStart=/usr/bin/env npm run prod/api:run
+
+[Install]   
+WantedBy=multi-user.target
