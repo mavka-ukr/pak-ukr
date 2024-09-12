@@ -9,7 +9,7 @@ Type=simple
 Restart=always
 RestartSec=1
 User=pak
-WorkingDirectory=/home/pak/pak-backend
+WorkingDirectory=/home/pak/backend/current
 ExecStart=/usr/bin/env npm run prod/api:run
 
 [Install]   

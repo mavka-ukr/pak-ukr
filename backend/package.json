@@ -5,15 +5,15 @@
   "scripts": {
     "build": "tsc",
     "prod/script": "node --env-file=.env --",
-    "prod/api:run": "node --env-file=.env build/services/api/pak_api.js",
-    "prod/db:main:knex": "node --env-file=.env ./node_modules/.bin/knex --knexfile ./build/database/main/knexfile.ts --knexpath ./build/database/main/",
-    "prod/db:main:migrate": "node --env-file=.env ./node_modules/.bin/knex --knexfile ./build/database/main/knexfile.ts --knexpath ./build/database/main/ migrate:latest",
-    "prod/db:main:rollback": "node --env-file=.env ./node_modules/.bin/knex --knexfile ./build/database/main/knexfile.ts --knexpath ./build/database/main/ migrate:rollback",
+    "prod/api:run": "node --env-file=.env build/src/services/api/pak_api.js",
+    "prod/db:main:knex": "node --env-file=.env ./node_modules/.bin/knex --knexfile ./build/src/database/main/knexfile.ts --knexpath ./build/src/database/main/",
+    "prod/db:main:migrate": "node --env-file=.env ./node_modules/.bin/knex --knexfile ./build/src/database/main/knexfile.ts --knexpath ./build/src/database/main/ migrate:latest",
+    "prod/db:main:rollback": "node --env-file=.env ./node_modules/.bin/knex --knexfile ./build/src/database/main/knexfile.ts --knexpath ./build/src/database/main/ migrate:rollback",
     "dev/script": "tsx --env-file=.env --",
-    "dev/api:run": "tsx watch --env-file=.env services/api/pak_api.ts",
-    "dev/db:main:knex": "tsx --env-file=.env ./node_modules/.bin/knex --knexfile ./database/main/knexfile.ts --knexpath ./database/main/",
-    "dev/db:main:migrate": "tsx --env-file=.env ./node_modules/.bin/knex --knexfile ./database/main/knexfile.ts --knexpath ./database/main/ migrate:latest",
-    "dev/db:main:rollback": "tsx --env-file=.env ./node_modules/.bin/knex --knexfile ./database/main/knexfile.ts --knexpath ./database/main/ migrate:rollback"
+    "dev/api:run": "tsx watch --env-file=.env src/services/api/pak_api.ts",
+    "dev/db:main:knex": "tsx --env-file=.env ./node_modules/.bin/knex --knexfile ./src/database/main/knexfile.ts --knexpath ./src/database/main/",
+    "dev/db:main:migrate": "tsx --env-file=.env ./node_modules/.bin/knex --knexfile ./src/database/main/knexfile.ts --knexpath ./src/database/main/ migrate:latest",
+    "dev/db:main:rollback": "tsx --env-file=.env ./node_modules/.bin/knex --knexfile ./src/database/main/knexfile.ts --knexpath ./src/database/main/ migrate:rollback"
   },
   "author": "kohutd",
   "license": "MIT",

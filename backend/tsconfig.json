@@ -1,15 +1,17 @@
 {
   "compilerOptions": {
+    "outDir": "./build",
+    "rootDir": "./",
     "strict": true,
     "strictPropertyInitialization": false,
     "experimentalDecorators": true,
-    "outDir": "./build",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "lib": [
       "ESNext",
       "DOM"
     ],
+    "allowSyntheticDefaultImports": true,
     "jsx": "react",
     "jsxFactory": "Html.createElement",
     "jsxFragmentFactory": "Html.Fragment",
