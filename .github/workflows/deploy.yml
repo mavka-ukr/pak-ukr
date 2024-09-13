@@ -21,6 +21,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
+            echo "Building and deploying backend..."
             sudo -u forge "cd /home/forge/pak-ukr/source && git pull origin production"
             sudo -u forge "cd /home/forge/pak-ukr/source/backend && npm i"
             sudo -u forge "cd /home/forge/pak-ukr/source/backend && npm run build"
@@ -33,3 +34,4 @@ jobs:
             sudo -u root "cd /home/forge/pak-ukr/production/backend/current && bash server/install.sh"
             sudo -u root "cd /home/forge/pak-ukr/production/backend/current && bash server/start.sh"
             sudo -u forge "cd /home/forge/pak-ukr/production/backend && rm -rf prev"
+            echo "Building and deploying frontend..."
