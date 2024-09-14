@@ -1,4 +1,4 @@
-name: Auto Deploy in VPS after Push in Production
+name: Production Deploy
 
 on:
   push:
@@ -6,12 +6,12 @@ on:
       - production
 jobs:
   deploy:
-    name: Deploy project
+    name: Deploy via SSH
     permissions:
       deployments: write
     runs-on: ubuntu-latest
     steps:
-      - name: Set up SSH Key and Deploy my App on Server
+      - name: Set up SSH Key and Deploy on Server
         uses: appleboy/ssh-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
