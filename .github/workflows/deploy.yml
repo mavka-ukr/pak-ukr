@@ -32,6 +32,7 @@ jobs:
             sudo -u forge bash -c "cd /home/forge/pak-ukr/production/backend && cp -a /home/forge/pak-ukr/source/backend/build /home/forge/pak-ukr/source/backend/node_modules /home/forge/pak-ukr/source/backend/server /home/forge/pak-ukr/source/backend/package.json /home/forge/pak-ukr/source/backend/package-lock.json current"
             sudo -u forge bash -c "cd /home/forge/pak-ukr/production/backend && cp -a .env current"
             sudo -u forge bash -c "cd /home/forge/pak-ukr/production/backend && cp -a fullchain.pem privkey.pem current"
+            sudo -u forge bash -c "cd /home/forge/pak-ukr/production/backend/current && npm run prod/db:main:migrate"
             sudo -u root bash -c "cd /home/forge/pak-ukr/production/backend/current && bash server/install.sh"
             sudo -u root bash -c "cd /home/forge/pak-ukr/production/backend/current && bash server/start.sh"
             sudo -u forge bash -c "cd /home/forge/pak-ukr/source/backend && rm -rf build"
