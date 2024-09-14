@@ -16,12 +16,12 @@ for SERVICE in $SYSTEMD_SERVICES; do
     sudo systemctl enable "$SERVICE_FILENAME"
 done
 
-for CONFIG in $NGINX_CONFIGS; do
-    CONFIG_FILE="./server/nginx/$CONFIG"
-    CONFIG_FILENAME=$(basename "$CONFIG_FILE")
-    echo "Linking $NGINX_AVAILABLE_DIR/$CONFIG_FILENAME to $NGINX_ENABLED_DIR/$CONFIG_FILENAME"
-    sudo ln -sf "$NGINX_AVAILABLE_DIR/$CONFIG_FILENAME" "$NGINX_ENABLED_DIR/$CONFIG_FILENAME"
-done
-
-echo "Reloading nginx"
-sudo systemctl reload nginx
+#for CONFIG in $NGINX_CONFIGS; do
+#    CONFIG_FILE="./server/nginx/$CONFIG"
+#    CONFIG_FILENAME=$(basename "$CONFIG_FILE")
+#    echo "Linking $NGINX_AVAILABLE_DIR/$CONFIG_FILENAME to $NGINX_ENABLED_DIR/$CONFIG_FILENAME"
+#    sudo ln -sf "$NGINX_AVAILABLE_DIR/$CONFIG_FILENAME" "$NGINX_ENABLED_DIR/$CONFIG_FILENAME"
+#done
+#
+#echo "Reloading nginx"
+#sudo systemctl reload nginx

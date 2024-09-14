@@ -8,8 +8,8 @@ StartLimitIntervalSec=0
 Type=simple
 Restart=always
 RestartSec=1
-User=pak
-WorkingDirectory=/home/pak/pak-ukr-backend/current
+User=forge
+WorkingDirectory=/home/forge/pak-ukr/production/backend/current
 ExecStart=/usr/bin/env npm run prod/api:run
 
 [Install]   

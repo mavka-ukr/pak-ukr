@@ -14,12 +14,9 @@ for SERVICE in $SYSTEMD_SERVICES; do
     sudo cp "$SERVICE_FILE" "$SYSTEMD_SERVICES_DIR/$SERVICE_FILENAME"
 done
 
-for CONFIG in $NGINX_CONFIGS; do
-    CONFIG_FILE="./server/nginx/$CONFIG"
-    CONFIG_FILENAME=$(basename "$CONFIG_FILE")
-    echo "Copying $CONFIG_FILE to $NGINX_AVAILABLE_DIR/$CONFIG_FILENAME"
-    sudo cp "$CONFIG_FILE" "$NGINX_AVAILABLE_DIR/$CONFIG_FILENAME"
-done
-
-echo "Reloading nginx"
-sudo systemctl reload nginx
+#for CONFIG in $NGINX_CONFIGS; do
+#    CONFIG_FILE="./server/nginx/$CONFIG"
+#    CONFIG_FILENAME=$(basename "$CONFIG_FILE")
+#    echo "Copying $CONFIG_FILE to $NGINX_AVAILABLE_DIR/$CONFIG_FILENAME"
+#    sudo cp "$CONFIG_FILE" "$NGINX_AVAILABLE_DIR/$CONFIG_FILENAME"
+#done
