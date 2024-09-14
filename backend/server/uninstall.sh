@@ -14,9 +14,9 @@ for SERVICE in $SYSTEMD_SERVICES; do
     sudo rm "$SYSTEMD_SERVICES_DIR/$SERVICE_FILENAME"
 done
 
-#for CONFIG in $NGINX_CONFIGS; do
-#    CONFIG_FILE="./server/nginx/$CONFIG"
-#    CONFIG_FILENAME=$(basename "$CONFIG_FILE")
-#    echo "Removing $NGINX_AVAILABLE_DIR/$CONFIG_FILENAME"
-#    sudo rm "$NGINX_AVAILABLE_DIR/$CONFIG_FILENAME"
-#done
+for CONFIG in $NGINX_CONFIGS; do
+    CONFIG_FILE="./server/nginx/$CONFIG"
+    CONFIG_FILENAME=$(basename "$CONFIG_FILE")
+    echo "Removing $NGINX_AVAILABLE_DIR/$CONFIG_FILENAME"
+    sudo rm "$NGINX_AVAILABLE_DIR/$CONFIG_FILENAME"
+done
