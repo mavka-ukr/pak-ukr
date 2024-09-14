@@ -8,6 +8,9 @@ import loginMethodHandler from "../../../handlers/auth/loginMethodHandler.js";
 class LoginMethodV1Params extends X2Builder {
   @X2Param(String)
   public mavkaCode: string;
+
+  @X2Param(String)
+  public redirectUri: string;
 }
 
 const loginMethodV1 = createAppMethod(
@@ -17,9 +20,9 @@ const loginMethodV1 = createAppMethod(
   async (params, context) => {
     const token = await loginMethodHandler(params, context);
     return {
-      result: await AuthV1.makeForToken(token)
+      result: await AuthV1.makeForToken(token),
     };
-  }
+  },
 );
 
 export default loginMethodV1;

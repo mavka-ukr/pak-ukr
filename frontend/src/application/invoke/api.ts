@@ -49,7 +49,10 @@ export interface PakResult {
   description: string;
 }
 
-export function invokeLogin(params: { mavkaCode: string }): Promise<AuthT> {
+export function invokeLogin(params: {
+  mavkaCode: string;
+  redirectUri: string;
+}): Promise<AuthT> {
   return invoke<AuthT>("login", params);
 }
 

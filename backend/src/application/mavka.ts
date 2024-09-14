@@ -43,13 +43,16 @@ export async function getMavkaUserByToken(token: string): Promise<MavkaUser> {
   };
 }
 
-export async function getMavkaTokenByCode(code: string): Promise<string> {
+export async function getMavkaTokenByCode(
+  code: string,
+  redirectUri: string,
+): Promise<string> {
   const token = await axios
     .postForm("https://я.мавка.укр/oauth/token", {
       grant_type: "authorization_code",
       client_id: "1",
       client_secret: "WiJQV1jLw3gNnCgIPDtEaTA01ZyntnkqLr3PKuGD",
-      redirect_uri: "http://localhost:3000/ya",
+      redirect_uri: redirectUri,
       code,
     })
     .then((response) => response.data.access_token);
