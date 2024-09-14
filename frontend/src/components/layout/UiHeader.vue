@@ -3,6 +3,12 @@ import { Pak } from "@/application/index.js";
 import UiMenu from "@/components/layout/UiMenu.vue";
 import UiMenuItem from "@/components/layout/UiMenuItem.vue";
 import { RouterLink } from "vue-router";
+import { computed } from "vue";
+import { CONFIG } from "@/application/config";
+
+const loginUrl = computed(() => {
+  return `https://я.мавка.укр/oauth/authorize?client_id=1&redirect_uri=${CONFIG.PAK_APP_ULR}/ya&response_type=code&scope=id father_name name family_name family_mother_name photo email`;
+});
 
 function logout() {
   localStorage.clear();
@@ -47,12 +53,7 @@ function logout() {
         </VDropdown>
       </template>
       <template v-else>
-        <a
-          href="https://я.мавка.укр/oauth/authorize?client_id=1&redirect_uri=http://localhost:3000/ya&response_type=code&scope=id father_name name family_name family_mother_name photo email"
-          class="UiHeaderButton"
-        >
-          Увійти
-        </a>
+        <a :href="loginUrl" class="UiHeaderButton">Увійти</a>
       </template>
     </div>
   </div>
