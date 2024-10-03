@@ -5,6 +5,7 @@ import UiPakList from "@/components/paks/UiPakList.vue";
 import UiPakItem from "@/components/paks/UiPakItem.vue";
 import UiFooter from "@/components/layout/UiFooter.vue";
 import UiContent from "@/components/layout/UiContent.vue";
+import { Pak } from "@/application";
 </script>
 
 <template>
@@ -14,20 +15,12 @@ import UiContent from "@/components/layout/UiContent.vue";
 
     <UiContent>
       <UiPakList>
-        <UiPakItem />
-        <UiPakItem />
-        <UiPakItem />
-        <UiPakItem />
-        <UiPakItem />
-        <UiPakItem />
-        <UiPakItem />
-        <UiPakItem />
-        <UiPakItem />
-        <UiPakItem />
-        <UiPakItem />
-        <UiPakItem />
-        <UiPakItem />
-        <UiPakItem />
+        <template
+          v-for="pak in Pak.recentPaksThread.filteredItems"
+          :key="pak.data.id"
+        >
+          <UiPakItem :pak="pak" />
+        </template>
       </UiPakList>
     </UiContent>
 

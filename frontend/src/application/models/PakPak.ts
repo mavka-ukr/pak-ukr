@@ -15,7 +15,7 @@ function getPakPakFromStorageOrNew(id: number): PakPak {
 class PakPak {
   public data: {
     id: number;
-    deleted?: boolean;
+    deleted: boolean;
     name: string;
     description: string;
   };
@@ -25,7 +25,7 @@ class PakPak {
       id: 0,
       deleted: false,
       name: "",
-      description: ""
+      description: "",
     };
   }
 

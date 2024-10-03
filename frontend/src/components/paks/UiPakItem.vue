@@ -1,4 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type PakPak from "@/application/models/PakPak";
+
+defineProps<{
+  pak: PakPak;
+}>();
+</script>
 
 <template>
   <div class="UiPakItem">
