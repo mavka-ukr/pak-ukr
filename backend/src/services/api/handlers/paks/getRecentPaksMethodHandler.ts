@@ -6,12 +6,9 @@ async function getRecentPaksMethodHandler(
     limit: number;
     cursorId: number | null;
   },
-  context: MethodContext
+  context: MethodContext,
 ) {
-  return await dbGetRecentPaks(
-    params.limit,
-    params.cursorId
-  );
+  return await dbGetRecentPaks(params.limit, params.cursorId);
 }
 
 export default getRecentPaksMethodHandler;

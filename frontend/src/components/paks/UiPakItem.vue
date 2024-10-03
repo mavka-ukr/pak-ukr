@@ -14,16 +14,24 @@ defineProps<{
         alt=""
       />
       <RouterLink :to="encodeURI('/п/привіт')" class="UiPakItemTitle">
-        привіт
+        {{ pak.data.name }}
       </RouterLink>
-      <div class="UiPakItemVersion">1.0.0</div>
+      <template v-if="pak.data.version">
+        <div class="UiPakItemVersion">1.0.0</div>
+      </template>
     </div>
-    <div class="UiPakItemDescription">Привіт від Лесі!</div>
+    <template v-if="pak.data.description">
+      <div class="UiPakItemDescription">{{ pak.data.description }}</div>
+    </template>
     <div class="UiPakItemFooter">
-      <a href="https://github.com/kohutd" class="UiPakItemFooterItem">
-        документація
-      </a>
-      <a href="https://github.com/kohutd" class="UiPakItemFooterItem">код</a>
+      <template v-if="pak.data.docsUrl">
+        <a :href="pak.data.docsUrl" class="UiPakItemFooterItem">
+          Документація
+        </a>
+      </template>
+      <template v-if="pak.data.sourceUrl">
+        <a :href="pak.data.sourceUrl" class="UiPakItemFooterItem">Код</a>
+      </template>
     </div>
   </div>
 </template>

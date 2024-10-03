@@ -96,11 +96,19 @@ export class PakV1 extends PakTV1 {
   @X2Param(String)
   public description: string;
 
+  @X2Param(String)
+  public docsUrl: string;
+
+  @X2Param(String)
+  public sourceUrl: string;
+
   public static makeHavingData(pak: Pak, makeData: MakeData): PakTV1 {
     const pakV1 = new PakV1();
     pakV1.id = pak.id;
     pakV1.name = pak.name;
     pakV1.description = pak.description;
+    pakV1.docsUrl = pak.docs_url;
+    pakV1.sourceUrl = pak.code_url;
     return pakV1;
   }
 }

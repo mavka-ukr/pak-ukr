@@ -1,7 +1,7 @@
 import { X2Builder, X2Concrete, X2Param } from "@storinka/invoke/x2.js";
 import { InvokeMethodAuthRequired } from "@storinka/invoke/server.js";
 import { createAppMethod } from "../../../../../application/index.js";
-import { PakTV1 } from "../../../data/v1/post/PakTV1.js";
+import { PakTV1 } from "../../../data/v1/pak/PakTV1.js";
 import createPakMethodHandler from "../../../handlers/paks/createPakMethodHandler.js";
 
 @X2Concrete("CreatePakMethodV1Params")

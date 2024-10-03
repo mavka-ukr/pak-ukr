@@ -15,7 +15,7 @@
   border-top: 1px solid rgb(var(--ui-border-rgb));
 
   img {
-    margin-right: 0.7 5rem;
+    margin-right: 0.75rem;
     height: 20px;
     width: 20px;
   }

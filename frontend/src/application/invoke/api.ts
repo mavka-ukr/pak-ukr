@@ -47,6 +47,8 @@ export interface PakResult {
   id: number;
   name: string;
   description: string;
+  docsUrl: string;
+  sourceUrl: string;
 }
 
 export function invokeLogin(params: {

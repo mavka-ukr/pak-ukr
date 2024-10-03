@@ -18,6 +18,8 @@ class PakPak {
     deleted: boolean;
     name: string;
     description: string;
+    docsUrl: string;
+    sourceUrl: string;
   };
 
   constructor() {
@@ -26,6 +28,8 @@ class PakPak {
       deleted: false,
       name: "",
       description: "",
+      docsUrl: "",
+      sourceUrl: "",
     };
   }
 
@@ -33,6 +37,8 @@ class PakPak {
     this.data.id = pakResult.id;
     this.data.name = pakResult.name;
     this.data.description = pakResult.description;
+    this.data.docsUrl = pakResult.docsUrl;
+    this.data.sourceUrl = pakResult.sourceUrl;
   }
 
   public static fromT(pakT: PakT): PakPak {
