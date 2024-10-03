@@ -32,8 +32,8 @@ import { Pak } from "@/application";
         <template #loadingNext>
           <div class="UiPakListLoadingNext">Завантаження...</div>
         </template>
-        <template #errorNext>
-          <div class="UiPakListErrorNext">Помилка!</div>
+        <template #errorNext="{ error }">
+          <div class="UiPakListErrorNext">{{ error }}</div>
         </template>
         <template #noMore>
           <div class="UiPakListNoMore">Більше немає...</div>

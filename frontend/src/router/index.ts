@@ -14,16 +14,6 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: encodeURI("/п/:name"),
-      name: "pak",
-      component: PakView,
-    },
-    {
-      path: encodeURI("/к/:username"),
-      name: "user",
-      component: UserView,
-    },
-    {
       path: encodeURI("/створити"),
       name: "create",
       component: CreateView,
@@ -32,6 +22,16 @@ const router = createRouter({
       path: encodeURI("/ya"),
       name: "ya",
       component: YaRedirectView,
+    },
+    {
+      path: encodeURI("/:name"),
+      name: "pak",
+      component: PakView,
+    },
+    {
+      path: encodeURI("/користувач/:username"),
+      name: "user",
+      component: UserView,
     },
   ],
   scrollBehavior() {

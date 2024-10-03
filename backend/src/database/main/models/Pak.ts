@@ -8,6 +8,7 @@ export interface Pak extends Model {
   description: string;
   code_url: string;
   docs_url: string;
+  pak_version_id: number | null;
 }
 
 export const PakDb = {

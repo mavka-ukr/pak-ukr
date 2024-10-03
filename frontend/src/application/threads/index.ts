@@ -53,6 +53,7 @@ export abstract class AbstractInfiniteThread<T> {
       this.data.isLoadedInitial = true;
       this.data.error = undefined;
     } catch (e) {
+      console.log(e);
       this.data.error = e;
     }
     this.data.isLoadingInitial = false;
@@ -73,6 +74,7 @@ export abstract class AbstractInfiniteThread<T> {
       this.data.hasNext = loadedItems.length === this.nextLimit;
       this.data.error = undefined;
     } catch (e) {
+      console.log(e);
       this.data.error = e;
     }
     this.data.isLoadingNext = false;

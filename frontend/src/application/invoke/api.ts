@@ -49,6 +49,21 @@ export interface PakResult {
   description: string;
   docsUrl: string;
   sourceUrl: string;
+  version: PakVersionT | null;
+}
+
+export type PakVersionT = DeletedPakVersionResult | PakVersionResult;
+
+export interface DeletedPakVersionResult {
+  "@": "DeletedPakVersion";
+  id: number;
+}
+
+export interface PakVersionResult {
+  "@": "PakVersion";
+  id: number;
+  name: string;
+  description: string;
 }
 
 export function invokeLogin(params: {

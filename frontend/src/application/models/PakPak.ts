@@ -1,4 +1,5 @@
 import type { PakResult, PakT } from "@/application/invoke/api";
+import PakPakVersion from "@/application/models/PakPakVersion";
 
 const pakPaksStorage = new Map<number, PakPak>();
 
@@ -20,6 +21,7 @@ class PakPak {
     description: string;
     docsUrl: string;
     sourceUrl: string;
+    version: PakPakVersion | null;
   };
 
   constructor() {
@@ -30,6 +32,7 @@ class PakPak {
       description: "",
       docsUrl: "",
       sourceUrl: "",
+      version: null,
     };
   }
 
@@ -39,6 +42,7 @@ class PakPak {
     this.data.description = pakResult.description;
     this.data.docsUrl = pakResult.docsUrl;
     this.data.sourceUrl = pakResult.sourceUrl;
+    this.data.version = PakPakVersion.fromTNullable(pakResult.version);
   }
 
   public static fromT(pakT: PakT): PakPak {

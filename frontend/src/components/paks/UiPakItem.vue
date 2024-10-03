@@ -13,11 +13,11 @@ defineProps<{
         src="https://avatars.githubusercontent.com/u/129215866?s=200&v=4"
         alt=""
       />
-      <RouterLink :to="encodeURI('/п/привіт')" class="UiPakItemTitle">
+      <RouterLink :to="encodeURI(`/${pak.data.name}`)" class="UiPakItemTitle">
         {{ pak.data.name }}
       </RouterLink>
       <template v-if="pak.data.version">
-        <div class="UiPakItemVersion">1.0.0</div>
+        <div class="UiPakItemVersion">{{ pak.data.version.data.name }}</div>
       </template>
     </div>
     <template v-if="pak.data.description">

@@ -1,6 +1,5 @@
 import { commonDb, Model } from "../../postgres.js";
 import mainDb from "../index.js";
-import { Pak } from "./Pak.js";
 
 export interface PakVersion extends Model {
   pak_id: number;
@@ -10,5 +9,5 @@ export interface PakVersion extends Model {
 }
 
 export const PakVersionDb = {
-  ...commonDb<Pak>(mainDb, "pak_versions"),
+  ...commonDb<PakVersion>(mainDb, "pak_versions"),
 };
