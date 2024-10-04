@@ -1,5 +1,6 @@
 import type { PakResult, PakT } from "@/application/invoke/api";
 import PakPakVersion from "@/application/models/PakPakVersion";
+import PakUser from "@/application/models/PakUser";
 
 const pakPaksStorage = new Map<number, PakPak>();
 
@@ -22,6 +23,8 @@ class PakPak {
     docsUrl: string;
     sourceUrl: string;
     version: PakPakVersion | null;
+    author: PakUser;
+    logoUrl: string;
   };
 
   constructor() {
@@ -33,6 +36,8 @@ class PakPak {
       docsUrl: "",
       sourceUrl: "",
       version: null,
+      author: new PakUser(),
+      logoUrl: "",
     };
   }
 
@@ -43,6 +48,7 @@ class PakPak {
     this.data.docsUrl = pakResult.docsUrl;
     this.data.sourceUrl = pakResult.sourceUrl;
     this.data.version = PakPakVersion.fromTNullable(pakResult.version);
+    this.data.author = PakUser.fromT(pakResult.author);
   }
 
   public static fromT(pakT: PakT): PakPak {

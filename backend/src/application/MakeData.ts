@@ -5,6 +5,7 @@ import {
   PakVersion,
   PakVersionDb,
 } from "../database/main/models/PakVersion.js";
+import { PAK_ERROR_RECORD_NOT_FOUND } from "./errors.js";
 
 class MakeData {
   public methodContext: MethodContext;
@@ -35,6 +36,58 @@ class MakeData {
     this.userList = [...this.userList, ...data.userList];
     this.pakList = [...this.pakList, ...data.pakList];
     this.pakVersionList = [...this.pakVersionList, ...data.pakVersionList];
+  }
+
+  public getUserById(id: number): User | null {
+    const user = this.userList.find((user) => user.id === id);
+    if (user) {
+      return user;
+    }
+    return null;
+  }
+
+  public getUserByIdOrFail(id: number): User {
+    const user = this.userList.find((user) => user.id === id);
+    if (user) {
+      return user;
+    }
+    throw PAK_ERROR_RECORD_NOT_FOUND;
+  }
+
+  public getPakById(id: number): Pak | null {
+    const pak = this.pakList.find((pak) => pak.id === id);
+    if (pak) {
+      return pak;
+    }
+    return null;
+  }
+
+  public getPakByIdOrFail(id: number): Pak {
+    const pak = this.pakList.find((pak) => pak.id === id);
+    if (pak) {
+      return pak;
+    }
+    throw PAK_ERROR_RECORD_NOT_FOUND;
+  }
+
+  public getPakVersionById(id: number): PakVersion | null {
+    const pakVersion = this.pakVersionList.find(
+      (pakVersion) => pakVersion.id === id,
+    );
+    if (pakVersion) {
+      return pakVersion;
+    }
+    return null;
+  }
+
+  public getPakVersionByIdOrFail(id: number): PakVersion {
+    const pakVersion = this.pakVersionList.find(
+      (pakVersion) => pakVersion.id === id,
+    );
+    if (pakVersion) {
+      return pakVersion;
+    }
+    throw PAK_ERROR_RECORD_NOT_FOUND;
   }
 
   public async fetchUsers(ids: number[]) {

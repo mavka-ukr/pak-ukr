@@ -32,7 +32,7 @@ export interface UserResult {
   "@": "User";
   id: number;
   name: string;
-  avatar_url: string | null;
+  avatarUrl: string | null;
 }
 
 export type PakT = DeletedPakResult | PakResult;
@@ -50,6 +50,7 @@ export interface PakResult {
   docsUrl: string;
   sourceUrl: string;
   version: PakVersionT | null;
+  author: UserT;
 }
 
 export type PakVersionT = DeletedPakVersionResult | PakVersionResult;

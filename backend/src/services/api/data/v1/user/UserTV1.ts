@@ -59,7 +59,11 @@ class UserTV1Builder extends X2Builder {
 }
 
 @X2Abstract("UserT")
-export class UserTV1 extends UserTV1Builder {}
+export class UserTV1 extends UserTV1Builder {
+  public static makeHavingData(user: User, makeData: MakeData): UserTV1 {
+    return UserV1.makeHavingData(user, makeData);
+  }
+}
 
 @X2Concrete("DeletedUser")
 export class DeletedUserV1 extends UserTV1 {
@@ -92,13 +96,13 @@ export class UserV1 extends UserTV1 {
   public name: string;
 
   @X2Param([String, null])
-  public avatar_url: string | null;
+  public avatarUrl: string | null;
 
   public static makeHavingData(user: User, makeData: MakeData): UserTV1 {
     const userV1 = new UserV1();
     userV1.id = user.id;
     userV1.name = user.first_name;
-    userV1.avatar_url = user.avatar_url;
+    userV1.avatarUrl = user.avatar_url;
     return userV1;
   }
 

@@ -33,7 +33,7 @@ class PakUser {
   public fillFromUserResult(userResult: UserResult): void {
     this.data.id = userResult.id;
     this.data.name = userResult.name;
-    this.data.avatarUrl = userResult.avatar_url;
+    this.data.avatarUrl = userResult.avatarUrl;
   }
 
   public static fromT(userT: UserT): PakUser {

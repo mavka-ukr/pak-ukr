@@ -8,6 +8,7 @@ import {
   X2Param,
 } from "@storinka/invoke/x2.js";
 import { PakVersionTV1 } from "./PakVersionTV1.js";
+import { UserTV1 } from "../user/UserTV1.js";
 
 class PakTV1Builder extends X2Builder {
   public static makeHavingData(pak: Pak, makeData: MakeData): PakTV1 {
@@ -70,6 +71,7 @@ export class PakTV1 extends PakTV1Builder {
     methodContext: MethodContext,
   ): Promise<MakeData> {
     const makeData = new MakeData({ methodContext, pakList: [...items] });
+    await makeData.fetchUsers(items.flatMap((pak) => pak.user_id));
     return makeData;
   }
 }
@@ -106,6 +108,9 @@ export class PakV1 extends PakTV1 {
   @X2Param([PakVersionTV1, null])
   public version: PakVersionTV1 | null;
 
+  @X2Param(UserTV1)
+  public author: UserTV1;
+
   public static makeHavingData(pak: Pak, makeData: MakeData): PakTV1 {
     const pakV1 = new PakV1();
     pakV1.id = pak.id;
@@ -114,9 +119,7 @@ export class PakV1 extends PakTV1 {
     pakV1.docsUrl = pak.docs_url;
     pakV1.sourceUrl = pak.code_url;
     if (pak.pak_version_id) {
-      const pakVersion = makeData.pakVersionList.find(
-        (pakVersion) => pakVersion.id === pak.pak_version_id,
-      );
+      const pakVersion = makeData.getPakVersionById(pak.pak_version_id);
       pakV1.version = PakVersionTV1.makeHavingDataNullable(
         pakVersion,
         makeData,
@@ -124,6 +127,8 @@ export class PakV1 extends PakTV1 {
     } else {
       pakV1.version = null;
     }
+    const authorUser = makeData.getUserByIdOrFail(pak.user_id);
+    pakV1.author = UserTV1.makeHavingData(authorUser, makeData);
     return pakV1;
   }
 }

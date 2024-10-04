@@ -17,7 +17,7 @@ class PakVersionTV1Builder extends X2Builder {
   }
 
   public static makeHavingDataNullable(
-    pakVersion: PakVersion | null | undefined,
+    pakVersion: PakVersion | null,
     makeData: MakeData,
   ): PakVersionTV1 | null {
     return pakVersion ? this.makeHavingData(pakVersion, makeData) : null;
@@ -46,7 +46,7 @@ class PakVersionTV1Builder extends X2Builder {
   }
 
   public static async makeNullable(
-    pakVersion: PakVersion | null | undefined,
+    pakVersion: PakVersion | null,
     methodContext: MethodContext,
   ): Promise<PakVersionTV1 | null> {
     return pakVersion ? this.make(pakVersion, methodContext) : null;
