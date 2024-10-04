@@ -2,7 +2,7 @@ import { CONFIG, isHostnameProduction } from "@/application/config";
 import { createInvokeWSJSONClient } from "@storinka/invoke-client/InvokeWSJSONClient";
 import {
   getSessionTokenFromStorage,
-  removeSessionTokenFromStorage
+  removeSessionTokenFromStorage,
 } from "@/application/token";
 
 const pakInvokeClient = createInvokeWSJSONClient<any>({
@@ -23,12 +23,12 @@ const pakInvokeClient = createInvokeWSJSONClient<any>({
     window.location.reload();
   },
   getRetryTimeout: () => 1000,
-  getAuthorizationToken: () => getSessionTokenFromStorage()
+  getAuthorizationToken: () => getSessionTokenFromStorage(),
 });
 
 export function invoke<R>(
   name: string,
-  params: Record<string, any>
+  params: Record<string, any>,
 ): Promise<R> {
   if (!isHostnameProduction()) {
     console.warn("invoke", name, params);

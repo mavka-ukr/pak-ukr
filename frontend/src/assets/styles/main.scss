@@ -1,4 +1,4 @@
-@import 'floating-vue/dist/style.css';
+@import "floating-vue/dist/style.css";
 
 .v-popper--theme-dropdown .v-popper__inner {
   background: #fff;
@@ -22,14 +22,24 @@
 }
 
 .material-symbols-rounded {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" -25, "opsz" 48;
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" -25,
+    "opsz" 48;
 }
 
 .material-symbols-rounded.filled {
-  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" -25, "opsz" 48;
+  font-variation-settings:
+    "FILL" 1,
+    "wght" 400,
+    "GRAD" -25,
+    "opsz" 48;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -52,18 +62,23 @@ html {
   }
 }
 
-body, #app {
+body,
+#app {
   margin: 0;
   width: 100%;
   height: 100%;
   padding: 0;
 }
 
-button, input, textarea, select {
+button,
+input,
+textarea,
+select {
   font-family: Rubik, sans-serif;
 }
 
-input:not([type="checkbox"]):not([type="radio"]), textarea {
+input:not([type="checkbox"]):not([type="radio"]),
+textarea {
   padding: 0.75rem;
   border: 1px solid rgb(var(--ui-border-rgb));
   //border-radius: .6rem;
@@ -73,7 +88,8 @@ input:not([type="checkbox"]):not([type="radio"]), textarea {
   font-size: 1rem;
 }
 
-input:not([type="checkbox"]):not([type="radio"]):focus, textarea:focus {
+input:not([type="checkbox"]):not([type="radio"]):focus,
+textarea:focus {
   outline: none;
   border-color: #000;
 }
@@ -106,12 +122,12 @@ h2 {
 
 .PageBlock {
   padding: 1rem;
-  
+
   &.paddingless {
     padding: 0;
   }
 
-  &.empty { 
+  &.empty {
     min-height: 100px;
     display: flex;
     align-items: center;
