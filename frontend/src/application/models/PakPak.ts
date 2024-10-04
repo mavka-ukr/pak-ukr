@@ -2,6 +2,7 @@ import type { PakResult, PakT } from "@/application/invoke/api";
 import PakPakVersion from "@/application/models/PakPakVersion";
 import PakUser from "@/application/models/PakUser";
 import { shallowReactive } from "vue";
+import { PakVersionsThread } from "@/application/threads/pakVersions";
 
 const pakPaksStorage = shallowReactive(new Map<number, PakPak>());
 
@@ -27,6 +28,7 @@ class PakPak {
     author: PakUser;
     logoUrl: string;
   };
+  public versionsThread: PakVersionsThread;
 
   constructor() {
     this.data = {
@@ -40,6 +42,7 @@ class PakPak {
       author: new PakUser(),
       logoUrl: "",
     };
+    this.versionsThread = new PakVersionsThread(this);
   }
 
   public static findByName(name: string): PakPak | undefined {

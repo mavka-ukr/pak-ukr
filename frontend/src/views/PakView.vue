@@ -9,6 +9,7 @@ import { computed, onBeforeMount, ref } from "vue";
 import { useRoute } from "vue-router";
 import PakPak from "@/application/models/PakPak";
 import { Pak } from "@/application";
+import UiThread from "@/components/layout/UiThread.vue";
 
 const route = useRoute();
 
@@ -43,6 +44,19 @@ onBeforeMount(() => {
           <img :src="pak.data.logoUrl" alt="" />
         </template>
         {{ pak.data.name }}
+        <span
+          style="
+            font-size: 1rem;
+            margin-left: 0.5ch;
+            font-weight: 500;
+            color: #789;
+          "
+        >
+          від
+          <RouterLink :to="encodeURI('/користувач/мтп')" style="color: inherit"
+            >МТП</RouterLink
+          >
+        </span>
       </UiSubheader>
       <UiTabs with-subheader>
         <UiTab @click="setTab('details')" :active="isDetailsTab">Деталі</UiTab>
@@ -72,7 +86,36 @@ onBeforeMount(() => {
             </div>
           </template>
           <template v-if="isVersionsTab">
-            <div class="PageBlock empty">Цей пак немає версій.</div>
+            <UiThread :thread="pak.versionsThread">
+              <template #default="{ thread }">
+                <UiPakVersionList>
+                  <template
+                    v-for="pakVersion in thread.filteredItems"
+                    :key="pakVersion.data.id"
+                  >
+                    <UiPakVersionItem :pak="pakVersion" />
+                  </template>
+                </UiPakVersionList>
+              </template>
+              <template #loading>
+                <div class="UiPakVersionListLoading">Завантаження...</div>
+              </template>
+              <template #error>
+                <div class="UiPakVersionListError">Помилка!</div>
+              </template>
+              <template #loadingNext>
+                <div class="UiPakVersionListLoadingNext">Завантаження...</div>
+              </template>
+              <template #errorNext="{ error }">
+                <div class="UiPakVersionListErrorNext">{{ error }}</div>
+              </template>
+              <template #noMore>
+                <div class="UiPakVersionListNoMore">Більше немає...</div>
+              </template>
+              <template #empty>
+                <div class="UiPakVersionListEmpty">Пусто...</div>
+              </template>
+            </UiThread>
           </template>
           <template v-if="isReviewsTab">
             <div class="PageBlock empty">Цей пак немає відгуків.</div>

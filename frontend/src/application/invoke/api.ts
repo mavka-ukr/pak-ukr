@@ -116,3 +116,11 @@ export function invokeFindPakByName(params: {
 }): Promise<PakT | null> {
   return invoke<PakT | null>("findPakByName", params);
 }
+
+export function invokeGetPakVersions(params: {
+  pakId: number;
+  limit: number;
+  cursorId: number | null;
+}): Promise<PakVersionT[]> {
+  return invoke<PakVersionT[]>("getPakVersions", params);
+}

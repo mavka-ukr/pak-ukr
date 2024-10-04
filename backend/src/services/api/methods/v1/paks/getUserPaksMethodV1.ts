@@ -1,5 +1,5 @@
 import { X2Builder, X2Concrete, X2List, X2Param } from "@storinka/invoke/x2.js";
-import { InvokeMethodAuthRequired } from "@storinka/invoke/server.js";
+import { InvokeMethodAuthOptional } from "@storinka/invoke/server.js";
 import { createAppMethod } from "../../../../../application/index.js";
 import { PakTV1 } from "../../../data/v1/pak/PakTV1.js";
 import getUserPaksMethodHandler from "../../../handlers/paks/getUserPaksMethodHandler.js";
@@ -17,7 +17,7 @@ class GetUserPaksMethodV1Params extends X2Builder {
 }
 
 const getUserPaksMethodV1 = createAppMethod(
-  InvokeMethodAuthRequired,
+  InvokeMethodAuthOptional,
   GetUserPaksMethodV1Params,
   X2List(PakTV1),
   async (params, context) => {
