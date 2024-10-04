@@ -23,6 +23,7 @@ async function createPakMethodHandler(
     description: params.description,
     code_url: "",
     docs_url: "",
+    pak_version_id: null,
   });
   return pak;
 }
