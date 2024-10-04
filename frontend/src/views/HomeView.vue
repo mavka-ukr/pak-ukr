@@ -17,7 +17,7 @@ import { Pak } from "@/application";
     <UiContent>
       <UiThread :thread="Pak.recentPaksThread">
         <template #default="{ thread }">
-          <UiPakList inside>
+          <UiPakList>
             <template v-for="pak in thread.filteredItems" :key="pak.data.id">
               <UiPakItem :pak="pak" />
             </template>

@@ -9,8 +9,8 @@ import { reactive, ref } from "vue";
 const data = reactive({
   name: "",
   description: "",
-  docs_url: "",
-  code_url: "",
+  docsUrl: "",
+  sourceUrl: "",
 });
 const isSubmitting = ref(false);
 
@@ -53,13 +53,13 @@ function submit() {
               placeholder="Короткий опис"
             />
             <input
-              v-model="data.docs_url"
-              type="text"
+              v-model="data.docsUrl"
+              type="url"
               placeholder="Посилання на документацію"
             />
             <input
-              v-model="data.code_url"
-              type="text"
+              v-model="data.sourceUrl"
+              type="url"
               placeholder="Посилання на код"
             />
           </form>

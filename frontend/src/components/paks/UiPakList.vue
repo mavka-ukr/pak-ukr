@@ -22,20 +22,15 @@ defineProps<{
   }
 
   &.inside {
-    grid-gap: 0;
+    grid-gap: 1px;
+    background-color: rgb(var(--ui-border-rgb));
     border-bottom: 1px solid rgb(var(--ui-border-rgb));
 
     .UiPakItem {
-      margin-bottom: -1px;
-      margin-right: -1px;
       border: none;
-      border-right: 1px solid rgb(var(--ui-border-rgb));
-      border-bottom: 1px solid rgb(var(--ui-border-rgb));
 
       @media (max-width: 1024px) {
         grid-template-columns: 1fr;
-        grid-gap: 0;
-        border-right: 1px solid transparent;
       }
     }
   }

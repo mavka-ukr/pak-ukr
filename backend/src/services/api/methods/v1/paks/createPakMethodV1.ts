@@ -11,6 +11,12 @@ class CreatePakMethodV1Params extends X2Builder {
 
   @X2Param(String)
   public description: string;
+
+  @X2Param(String)
+  public docsUrl: string;
+
+  @X2Param(String)
+  public sourceUrl: string;
 }
 
 const createPakMethodV1 = createAppMethod(

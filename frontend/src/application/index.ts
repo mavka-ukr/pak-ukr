@@ -11,7 +11,12 @@ export const Pak = shallowReactive<{
     user: PakUser;
   };
   recentPaksThread: RecentPaksThread;
-  createPak: (params: { name: string; description: string }) => Promise<PakPak>;
+  createPak: (params: {
+    name: string;
+    description: string;
+    docsUrl: string;
+    sourceUrl: string;
+  }) => Promise<PakPak>;
 }>({
   recentPaksThread: new RecentPaksThread(),
   createPak: async (params) => PakPak.fromT(await invokeCreatePak(params)),

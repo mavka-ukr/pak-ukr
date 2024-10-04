@@ -103,6 +103,8 @@ export function invokeGetUserPaks(params: {
 export function invokeCreatePak(params: {
   name: string;
   description: string;
+  docsUrl: string;
+  sourceUrl: string;
 }): Promise<PakT> {
   return invoke<PakT>("createPak", params);
 }

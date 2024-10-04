@@ -9,10 +9,9 @@ defineProps<{
 <template>
   <div class="UiPakItem">
     <div class="UiPakItemHead">
-      <img
-        src="https://avatars.githubusercontent.com/u/129215866?s=200&v=4"
-        alt=""
-      />
+      <template v-if="pak.data.logoUrl">
+        <img :src="pak.data.logoUrl" alt="" />
+      </template>
       <RouterLink :to="encodeURI(`/${pak.data.name}`)" class="UiPakItemTitle">
         {{ pak.data.name }}
       </RouterLink>
@@ -30,7 +29,7 @@ defineProps<{
         </a>
       </template>
       <template v-if="pak.data.sourceUrl">
-        <a :href="pak.data.sourceUrl" class="UiPakItemFooterItem">Код</a>
+        <a :href="pak.data.sourceUrl" class="UiPakItemFooterItem">Джерело</a>
       </template>
     </div>
   </div>
