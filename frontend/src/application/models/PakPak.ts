@@ -1,8 +1,9 @@
 import type { PakResult, PakT } from "@/application/invoke/api";
 import PakPakVersion from "@/application/models/PakPakVersion";
 import PakUser from "@/application/models/PakUser";
+import { shallowReactive } from "vue";
 
-const pakPaksStorage = new Map<number, PakPak>();
+const pakPaksStorage = shallowReactive(new Map<number, PakPak>());
 
 function getPakPakFromStorageOrNew(id: number): PakPak {
   const pakPakFromStorage = pakPaksStorage.get(id);
@@ -41,6 +42,12 @@ class PakPak {
     };
   }
 
+  public static findByName(name: string): PakPak | undefined {
+    return Array.from(pakPaksStorage.values()).find(
+      (pakPak) => pakPak.data.name === name,
+    );
+  }
+
   public fillFromPakResult(pakResult: PakResult): void {
     this.data.id = pakResult.id;
     this.data.name = pakResult.name;
@@ -49,6 +56,7 @@ class PakPak {
     this.data.sourceUrl = pakResult.sourceUrl;
     this.data.version = PakPakVersion.fromTNullable(pakResult.version);
     this.data.author = PakUser.fromT(pakResult.author);
+    this.data.logoUrl = pakResult.logoUrl;
   }
 
   public static fromT(pakT: PakT): PakPak {
