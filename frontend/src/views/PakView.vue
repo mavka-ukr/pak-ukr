@@ -53,9 +53,9 @@ onBeforeMount(() => {
           "
         >
           від
-          <RouterLink :to="encodeURI('/користувач/мтп')" style="color: inherit"
-            >МТП</RouterLink
-          >
+          <RouterLink :to="encodeURI('/автор/мтп')" style="color: inherit">
+            {{ pak.data.author.data.name }}
+          </RouterLink>
         </span>
       </UiSubheader>
       <UiTabs with-subheader>

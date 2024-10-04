@@ -13,3 +13,12 @@ export const PAK_ERROR_PAK_NAME_NOT_AVAILABLE = new InvokeMethodError(
   "PAK_NAME_NOT_AVAILABLE",
   400,
 );
+export const PAK_ERROR_INVALID_PAK_VERSION_NAME = new InvokeMethodError(
+  "INVALID_PAK_NAME",
+  400,
+);
+export const PAK_ERROR_PAK_VERSION_NAME_NOT_AVAILABLE = new InvokeMethodError(
+  "PAK_NAME_NOT_AVAILABLE",
+  400,
+);
+export const PAK_ERROR_FORBIDDEN = new InvokeMethodError("FORBIDDEN", 403);

@@ -29,7 +29,7 @@ const router = createRouter({
       component: PakView,
     },
     {
-      path: encodeURI("/користувач/:username"),
+      path: encodeURI("/автор/:username"),
       name: "user",
       component: UserView,
     },

@@ -6,6 +6,7 @@ import createPakMethodV1 from "./paks/createPakMethodV1.js";
 import getUserPaksMethodV1 from "./paks/getUserPaksMethodV1.js";
 import findPakByNameMethodV1 from "./paks/findPakByNameMethodV1.js";
 import getPakVersionsMethodV1 from "./paks/getPakVersionsMethodV1.js";
+import createPakVersionMethodV1 from "./paks/createPakVersionMethodV1.js";
 
 export default {
   v1: {
@@ -17,5 +18,6 @@ export default {
     createPak: createPakMethodV1,
     findPakByName: findPakByNameMethodV1,
     getPakVersions: getPakVersionsMethodV1,
+    createPakVersion: createPakVersionMethodV1,
   },
 };

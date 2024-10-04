@@ -124,3 +124,11 @@ export function invokeGetPakVersions(params: {
 }): Promise<PakVersionT[]> {
   return invoke<PakVersionT[]>("getPakVersions", params);
 }
+
+export function invokeCreatePakVersion(params: {
+  pakId: number;
+  name: string;
+  description: string;
+}): Promise<PakVersionT> {
+  return invoke<PakVersionT>("createPakVersion", params);
+}
