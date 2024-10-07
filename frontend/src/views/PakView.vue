@@ -12,6 +12,7 @@ import { Pak } from "@/application";
 import UiThread from "@/components/layout/UiThread.vue";
 import UiPakVersionList from "@/components/paks/UiPakVersionList.vue";
 import UiPakVersionItem from "@/components/paks/UiPakVersionItem.vue";
+import PakPakVersion from "@/application/models/PakPakVersion";
 
 const route = useRoute();
 const router = useRouter();
@@ -19,8 +20,22 @@ const router = useRouter();
 const tab = ref("деталі");
 
 const routePakName = computed(() => route.params.name as string);
+const routerPakVersionName = computed(() => route.params.version as string);
 const pak = computed(() => {
   return PakPak.findByName(routePakName.value);
+});
+const pakVersion = computed(() => {
+  if (pak.value) {
+    if (routerPakVersionName.value) {
+      return PakPakVersion.findByPakIdAndName(
+        pak.value.data.id,
+        routerPakVersionName.value,
+      );
+    } else {
+      return pak.value.data.version;
+    }
+  }
+  return null;
 });
 
 const isDetailsTab = computed(() => tab.value === "деталі");
@@ -30,16 +45,19 @@ const isDiscussionTab = computed(() => tab.value === "обговорення");
 
 function setTab(t: string) {
   tab.value = t;
-
-  router.replace({
-    query: {
-      вкладка: t,
-    },
-  });
 }
 
 onBeforeMount(() => {
-  Pak.fetchPakByName({ name: routePakName.value });
+  Pak.fetchPakByName({ name: routePakName.value }).then((pak) => {
+    if (pak) {
+      if (routerPakVersionName.value) {
+        Pak.fetchPakVersionByPakIdAndName({
+          pakId: pak.data.id,
+          name: routePakName.value,
+        });
+      }
+    }
+  });
   setTab((route.query["вкладка"] as string) || "деталі");
 });
 </script>
@@ -54,22 +72,20 @@ onBeforeMount(() => {
           <img :src="pak.data.logoUrl" alt="" />
         </template>
         {{ pak.data.name }}
-        <span
-          style="
-            font-size: 1rem;
-            margin-left: 0.5ch;
-            font-weight: 500;
-            color: #789;
-          "
-        >
-          від
-          <RouterLink
-            :to="encodeURI(`/автор/${pak.data.author.data.username}`)"
-            style="color: inherit"
+        <template v-if="pakVersion">
+          <span
+            style="
+              font-size: 1rem;
+              margin-left: 0.5ch;
+              background: black;
+              color: white;
+              border-radius: 0.5rem;
+              padding: 0.1rem 0.3rem;
+            "
           >
-            {{ pak.data.author.data.name }}
-          </RouterLink>
-        </span>
+            {{ pakVersion.data.name }}
+          </span>
+        </template>
       </UiSubheader>
       <UiTabs with-subheader>
         <UiTab @click="setTab('деталі')" :active="isDetailsTab">Деталі</UiTab>

@@ -25,14 +25,19 @@ const router = createRouter({
       component: YaRedirectView,
     },
     {
-      path: encodeURI("/:name"),
-      name: "pak",
-      component: PakView,
-    },
-    {
       path: encodeURI("/:name/створити-версію"),
       name: "create-version",
       component: CreateVersionView,
+    },
+    {
+      path: encodeURI("/:name/:version"),
+      name: "pak-version",
+      component: PakView,
+    },
+    {
+      path: encodeURI("/:name"),
+      name: "pak",
+      component: PakView,
     },
     {
       path: encodeURI("/автор/:username"),

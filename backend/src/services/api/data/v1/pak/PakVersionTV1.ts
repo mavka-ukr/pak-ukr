@@ -105,6 +105,9 @@ export class PakVersionV1 extends PakVersionTV1 {
   @X2Param(Number)
   public id: number;
 
+  @X2Param(Number)
+  public pakId: number;
+
   @X2Param(String)
   public name: string;
 
@@ -117,6 +120,7 @@ export class PakVersionV1 extends PakVersionTV1 {
   ): PakVersionTV1 {
     const pakVersionV1 = new PakVersionV1();
     pakVersionV1.id = pakVersion.id;
+    pakVersionV1.pakId = pakVersion.pak_id;
     pakVersionV1.name = pakVersion.name;
     pakVersionV1.description = pakVersion.description;
     return pakVersionV1;

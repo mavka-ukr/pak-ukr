@@ -24,13 +24,15 @@
     "@storinka/invoke": "^0.52.0",
     "@types/dompurify": "^3.0.5",
     "@types/jsdom": "^21.1.6",
+    "@types/semver": "^7.5.8",
     "axios": "^1.7.2",
     "bcrypt": "^5.1.1",
     "dompurify": "^3.1.4",
     "jsdom": "^24.0.0",
     "knex": "^3.1.0",
     "marked": "^12.0.2",
-    "pg": "^8.11.5"
+    "pg": "^8.11.5",
+    "semver": "^7.6.3"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",

@@ -72,6 +72,11 @@ export class PakTV1 extends PakTV1Builder {
   ): Promise<MakeData> {
     const makeData = new MakeData({ methodContext, pakList: [...items] });
     await makeData.fetchUsers(items.flatMap((pak) => pak.user_id));
+    await makeData.fetchPakVersions(
+      items
+        .flatMap((pak) => pak.pak_version_id)
+        .filter((v) => v != null) as number[],
+    );
     return makeData;
   }
 }
@@ -111,7 +116,7 @@ export class PakV1 extends PakTV1 {
   @X2Param(UserTV1)
   public author: UserTV1;
 
-  @X2Param([String])
+  @X2Param([String, null])
   public logoUrl: string | null;
 
   public static makeHavingData(pak: Pak, makeData: MakeData): PakTV1 {

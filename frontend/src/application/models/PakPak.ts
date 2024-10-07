@@ -26,7 +26,7 @@ class PakPak {
     sourceUrl: string;
     version: PakPakVersion | null;
     author: PakUser;
-    logoUrl: string;
+    logoUrl: string | null;
   };
   public versionsThread: PakVersionsThread;
 
@@ -40,7 +40,7 @@ class PakPak {
       sourceUrl: "",
       version: null,
       author: new PakUser(),
-      logoUrl: "",
+      logoUrl: null,
     };
     this.versionsThread = new PakVersionsThread(this);
   }

@@ -12,3 +12,15 @@ export async function dbGetPakVersions(
     cursorId,
   );
 }
+
+export async function dbFindPakVersionByPakIdAndName(
+  pakId: number,
+  name: string,
+) {
+  return (
+    (await PakVersionDb.query()
+      .where("pak_id", pakId)
+      .whereRaw("lower(name) = ?", name.toLowerCase())
+      .first()) || null
+  );
+}

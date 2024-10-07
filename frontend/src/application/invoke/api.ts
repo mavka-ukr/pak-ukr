@@ -52,7 +52,7 @@ export interface PakResult {
   sourceUrl: string;
   version: PakVersionT | null;
   author: UserT;
-  logoUrl: string;
+  logoUrl: string | null;
 }
 
 export type PakVersionT = DeletedPakVersionResult | PakVersionResult;
@@ -65,6 +65,7 @@ export interface DeletedPakVersionResult {
 export interface PakVersionResult {
   "@": "PakVersion";
   id: number;
+  pakId: number;
   name: string;
   description: string;
 }
@@ -139,4 +140,11 @@ export function invokeFindUserByUsername(params: {
   username: string;
 }): Promise<UserT | null> {
   return invoke<UserT | null>("findUserByUsername", params);
+}
+
+export function invokeFindPakVersionByPakIdAndName(params: {
+  pakId: number;
+  name: string;
+}): Promise<PakVersionT | null> {
+  return invoke<PakVersionT | null>("findPakVersionByPakIdAndName", params);
 }

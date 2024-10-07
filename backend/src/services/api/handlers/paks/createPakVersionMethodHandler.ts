@@ -6,6 +6,7 @@ import {
 } from "../../../../application/errors.js";
 import { PakVersionDb } from "../../../../database/main/models/PakVersion.js";
 import { PakDb } from "../../../../database/main/models/Pak.js";
+import semver from "semver";
 
 function isPakVersionNameValid(name: string): boolean {
   return /([0-9]+).([0-9]+).([0-9]+)/g.test(name);
@@ -61,6 +62,16 @@ async function createPakVersionMethodHandler(
     is_deleted: false,
     file_id: params.fileId,
   });
+  if (pak.pak_version_id === null) {
+    await PakDb.update(pak, { pak_version_id: pakVersion.id });
+  } else {
+    const currentPakVersion = await PakVersionDb.findByIdOrFail(
+      pak.pak_version_id,
+    );
+    if (semver.gt(params.name, currentPakVersion.name)) {
+      await PakDb.update(pak, { pak_version_id: pakVersion.id });
+    }
+  }
   return pakVersion;
 }
 
