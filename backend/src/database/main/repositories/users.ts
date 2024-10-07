@@ -14,3 +14,15 @@ export function dbGetRecentUsersForUser(
 export function dbFindUserByMavkaId(mavkaId: number, trx?: Knex.Transaction) {
   return UserDb.query(trx).where("mavka_id", mavkaId).first();
 }
+
+export async function dbFindUserById(id: number) {
+  return (await UserDb.query().where("id", id).first()) || null;
+}
+
+export async function dbFindUserByUsername(username: string) {
+  return (
+    (await UserDb.query()
+      .whereRaw("lower(username) = ?", username.toLowerCase())
+      .first()) || null
+  );
+}

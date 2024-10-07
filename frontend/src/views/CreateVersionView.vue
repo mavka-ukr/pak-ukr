@@ -21,6 +21,7 @@ const data = reactive({
   fileId: 0,
 });
 const file = ref<File | null>(null);
+const fileInputTry = ref(0);
 const isSubmitting = ref(false);
 
 onBeforeMount(() => {
@@ -30,6 +31,7 @@ onBeforeMount(() => {
 function submit() {
   if (pak.value) {
     isSubmitting.value = true;
+    // todo: upload file
     Pak.createPakVersion(pak.value.data.id, data)
       .then(() => {
         isSubmitting.value = false;
@@ -40,7 +42,20 @@ function submit() {
   }
 }
 
-function onFileInput() {}
+function resetFile() {
+  file.value = null;
+  data.fileId = 0;
+  fileInputTry.value++;
+}
+
+function onFileInput(event: Event) {
+  const f = (event.target as HTMLInputElement).files?.[0];
+  if (f) {
+    file.value = f;
+  } else {
+    resetFile();
+  }
+}
 </script>
 
 <template>
@@ -83,6 +98,7 @@ function onFileInput() {}
                 placeholder="Опис (зміни)"
               />
               <input
+                :key="fileInputTry"
                 @input="onFileInput"
                 type="file"
                 accept="application/zip"

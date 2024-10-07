@@ -1,7 +1,8 @@
 import type { UserResult, UserT } from "@/application/invoke/api";
 import { PaksThread, UserPaksThread } from "@/application/threads/paks";
+import { shallowReactive } from "vue";
 
-const pakUsersStorage = new Map<number, PakUser>();
+const pakUsersStorage = shallowReactive(new Map<number, PakUser>());
 
 function getPakUserFromStorageOrNew(id: number): PakUser {
   const pakUserFromStorage = pakUsersStorage.get(id);
@@ -17,6 +18,7 @@ class PakUser {
   public data: {
     id: number;
     name: string;
+    username: string;
     avatarUrl: string | null;
   };
   public paksThread: PaksThread;
@@ -25,14 +27,22 @@ class PakUser {
     this.data = {
       id: 0,
       name: "",
+      username: "",
       avatarUrl: null,
     };
     this.paksThread = new UserPaksThread(this);
   }
 
+  public static findByUsername(username: string): PakUser | undefined {
+    return Array.from(pakUsersStorage.values()).find(
+      (pakUser) => pakUser.data.username === username,
+    );
+  }
+
   public fillFromUserResult(userResult: UserResult): void {
     this.data.id = userResult.id;
     this.data.name = userResult.name;
+    this.data.username = userResult.username;
     this.data.avatarUrl = userResult.avatarUrl;
   }
 

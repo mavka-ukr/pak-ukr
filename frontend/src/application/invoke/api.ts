@@ -32,6 +32,7 @@ export interface UserResult {
   "@": "User";
   id: number;
   name: string;
+  username: string;
   avatarUrl: string | null;
 }
 
@@ -132,4 +133,10 @@ export function invokeCreatePakVersion(params: {
   fileId: number;
 }): Promise<PakVersionT> {
   return invoke<PakVersionT>("createPakVersion", params);
+}
+
+export function invokeFindUserByUsername(params: {
+  username: string;
+}): Promise<UserT | null> {
+  return invoke<UserT | null>("findUserByUsername", params);
 }

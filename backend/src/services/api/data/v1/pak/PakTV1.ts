@@ -111,8 +111,8 @@ export class PakV1 extends PakTV1 {
   @X2Param(UserTV1)
   public author: UserTV1;
 
-  @X2Param(String)
-  public logoUrl: string;
+  @X2Param([String])
+  public logoUrl: string | null;
 
   public static makeHavingData(pak: Pak, makeData: MakeData): PakTV1 {
     const pakV1 = new PakV1();
@@ -132,8 +132,7 @@ export class PakV1 extends PakTV1 {
     }
     const authorUser = makeData.getUserByIdOrFail(pak.user_id);
     pakV1.author = UserTV1.makeHavingData(authorUser, makeData);
-    pakV1.logoUrl =
-      "https://avatars.githubusercontent.com/u/129215866?s=200&v=4";
+    pakV1.logoUrl = null;
     return pakV1;
   }
 }

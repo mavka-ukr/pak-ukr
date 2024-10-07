@@ -93,6 +93,10 @@ defineProps<{
     display: flex;
     align-items: center;
 
+    &:empty {
+      margin-top: 0;
+    }
+
     .UiPakItemFooterItem {
       margin-right: 0.5rem;
       font-size: 0.8rem;

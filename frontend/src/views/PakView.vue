@@ -10,6 +10,8 @@ import { useRoute, useRouter } from "vue-router";
 import PakPak from "@/application/models/PakPak";
 import { Pak } from "@/application";
 import UiThread from "@/components/layout/UiThread.vue";
+import UiPakVersionList from "@/components/paks/UiPakVersionList.vue";
+import UiPakVersionItem from "@/components/paks/UiPakVersionItem.vue";
 
 const route = useRoute();
 const router = useRouter();
@@ -38,11 +40,7 @@ function setTab(t: string) {
 
 onBeforeMount(() => {
   Pak.fetchPakByName({ name: routePakName.value });
-
-  const query = route.query as { вкладка: string };
-  if (query.вкладка) {
-    tab.value = query.вкладка;
-  }
+  setTab((route.query["вкладка"] as string) || "деталі");
 });
 </script>
 
@@ -65,7 +63,10 @@ onBeforeMount(() => {
           "
         >
           від
-          <RouterLink :to="encodeURI('/автор/мтп')" style="color: inherit">
+          <RouterLink
+            :to="encodeURI(`/автор/${pak.data.author.data.username}`)"
+            style="color: inherit"
+          >
             {{ pak.data.author.data.name }}
           </RouterLink>
         </span>
@@ -100,7 +101,7 @@ onBeforeMount(() => {
           <template v-if="isVersionsTab">
             <div class="PageGrid">
               <div class="PageGridLeft">
-                <div class="PageBlock empty">
+                <div class="PageBlock paddingless">
                   <UiThread :thread="pak.versionsThread">
                     <template #default="{ thread }">
                       <UiPakVersionList>
@@ -108,7 +109,10 @@ onBeforeMount(() => {
                           v-for="pakVersion in thread.filteredItems"
                           :key="pakVersion.data.id"
                         >
-                          <UiPakVersionItem :pak="pakVersion" />
+                          <UiPakVersionItem
+                            :pak="pak"
+                            :pak-version="pakVersion"
+                          />
                         </template>
                       </UiPakVersionList>
                     </template>

@@ -4,8 +4,9 @@ import {
   invokeCreatePak,
   invokeCreatePakVersion,
   invokeFindPakByName,
+  invokeFindUserByUsername,
 } from "@/application/invoke/api";
-import type PakUser from "@/application/models/PakUser";
+import PakUser from "@/application/models/PakUser";
 import { RecentPaksThread } from "@/application/threads/paks";
 import PakPak from "@/application/models/PakPak";
 import PakPakVersion from "@/application/models/PakPakVersion";
@@ -23,6 +24,9 @@ export const Pak = shallowReactive<{
     sourceUrl: string;
   }) => Promise<PakPak>;
   fetchPakByName: (params: { name: string }) => Promise<PakPak | null>;
+  fetchUserByUsername: (params: {
+    username: string;
+  }) => Promise<PakUser | null>;
   createPakVersion: (
     pakId: number,
     params: {
@@ -36,6 +40,8 @@ export const Pak = shallowReactive<{
   createPak: async (params) => PakPak.fromT(await invokeCreatePak(params)),
   fetchPakByName: async (params) =>
     PakPak.fromTNullable(await invokeFindPakByName(params)),
+  fetchUserByUsername: async (params) =>
+    PakUser.fromTNullable(await invokeFindUserByUsername(params)),
   createPakVersion: async (pakId, params) =>
     PakPakVersion.fromT(await invokeCreatePakVersion({ pakId, ...params })),
 });

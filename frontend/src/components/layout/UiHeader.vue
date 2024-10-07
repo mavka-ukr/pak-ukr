@@ -29,14 +29,17 @@ function logout() {
         </RouterLink>
         <VDropdown :transition="false" :distance="6">
           <button
-            :to="encodeURI(`/автор/${Pak.me.user.data.id}`)"
+            :to="encodeURI(`/автор/${Pak.me.user.data.username}`)"
             class="UiHeaderButton"
           >
             {{ Pak.me.user.data.name }}
           </button>
           <template #popper>
             <UiMenu>
-              <UiMenuItem :component="RouterLink" :to="encodeURI('/автор/мтп')">
+              <UiMenuItem
+                :component="RouterLink"
+                :to="encodeURI(`/автор/${Pak.me.user.data.username}`)"
+              >
                 Профіль
               </UiMenuItem>
               <UiMenuItem

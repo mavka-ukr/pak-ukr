@@ -95,6 +95,9 @@ export class UserV1 extends UserTV1 {
   @X2Param(String)
   public name: string;
 
+  @X2Param(String)
+  public username: string;
+
   @X2Param([String, null])
   public avatarUrl: string | null;
 
@@ -102,6 +105,7 @@ export class UserV1 extends UserTV1 {
     const userV1 = new UserV1();
     userV1.id = user.id;
     userV1.name = user.first_name;
+    userV1.username = `а${user.id}`;
     userV1.avatarUrl = user.avatar_url;
     return userV1;
   }
