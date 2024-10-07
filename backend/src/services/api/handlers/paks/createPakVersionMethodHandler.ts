@@ -30,6 +30,7 @@ async function createPakVersionMethodHandler(
     pakId: number;
     name: string;
     description: string;
+    fileId: number;
   },
   context: AuthorizedMethodContext,
 ) {
@@ -49,11 +50,16 @@ async function createPakVersionMethodHandler(
   if (!(await isPakVersionNameAvailable(params.pakId, name))) {
     throw PAK_ERROR_PAK_VERSION_NAME_NOT_AVAILABLE;
   }
+  // const file = await FileDb.findByIdOrFail(params.fileId);
+  // if (file.user_id !== context.authorization.user.id) {
+  //   throw PAK_ERROR_FORBIDDEN;
+  // }
   const pakVersion = await PakVersionDb.save({
-    is_deleted: false,
     pak_id: params.pakId,
     name: params.name,
     description: params.description,
+    is_deleted: false,
+    file_id: params.fileId,
   });
   return pakVersion;
 }

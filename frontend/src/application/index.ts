@@ -23,16 +23,19 @@ export const Pak = shallowReactive<{
     sourceUrl: string;
   }) => Promise<PakPak>;
   fetchPakByName: (params: { name: string }) => Promise<PakPak | null>;
-  createPakVersion: (params: {
-    pakId: number;
-    name: string;
-    description: string;
-  }) => Promise<PakPakVersion>;
+  createPakVersion: (
+    pakId: number,
+    params: {
+      name: string;
+      description: string;
+      fileId: number;
+    },
+  ) => Promise<PakPakVersion>;
 }>({
   recentPaksThread: new RecentPaksThread(),
   createPak: async (params) => PakPak.fromT(await invokeCreatePak(params)),
   fetchPakByName: async (params) =>
     PakPak.fromTNullable(await invokeFindPakByName(params)),
-  createPakVersion: async (params) =>
-    PakPakVersion.fromT(await invokeCreatePakVersion(params)),
+  createPakVersion: async (pakId, params) =>
+    PakPakVersion.fromT(await invokeCreatePakVersion({ pakId, ...params })),
 });

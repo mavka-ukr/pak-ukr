@@ -45,6 +45,10 @@ class PakPak {
     this.versionsThread = new PakVersionsThread(this);
   }
 
+  public get CreateVersionURLPath() {
+    return encodeURI(`/${this.data.name}/створити-версію`);
+  }
+
   public static findByName(name: string): PakPak | undefined {
     return Array.from(pakPaksStorage.values()).find(
       (pakPak) => pakPak.data.name === name,

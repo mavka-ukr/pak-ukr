@@ -14,6 +14,9 @@ class CreatePakVersionMethodV1Params extends X2Builder {
 
   @X2Param(String)
   public description: string;
+
+  @X2Param(Number)
+  public fileId: number;
 }
 
 const createPakVersionMethodV1 = createAppMethod(

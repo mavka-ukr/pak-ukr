@@ -129,6 +129,7 @@ export function invokeCreatePakVersion(params: {
   pakId: number;
   name: string;
   description: string;
+  fileId: number;
 }): Promise<PakVersionT> {
   return invoke<PakVersionT>("createPakVersion", params);
 }

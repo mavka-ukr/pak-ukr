@@ -6,31 +6,43 @@ import UiSubheader from "@/components/layout/UiSubheader.vue";
 import UiTabs from "@/components/layout/UiTabs.vue";
 import UiTab from "@/components/layout/UiTab.vue";
 import { computed, onBeforeMount, ref } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import PakPak from "@/application/models/PakPak";
 import { Pak } from "@/application";
 import UiThread from "@/components/layout/UiThread.vue";
 
 const route = useRoute();
+const router = useRouter();
 
-const tab = ref("details");
+const tab = ref("деталі");
 
 const routePakName = computed(() => route.params.name as string);
 const pak = computed(() => {
   return PakPak.findByName(routePakName.value);
 });
 
-const isDetailsTab = computed(() => tab.value === "details");
-const isVersionsTab = computed(() => tab.value === "versions");
-const isReviewsTab = computed(() => tab.value === "reviews");
-const isDiscussionTab = computed(() => tab.value === "discussion");
+const isDetailsTab = computed(() => tab.value === "деталі");
+const isVersionsTab = computed(() => tab.value === "версії");
+const isReviewsTab = computed(() => tab.value === "відгуки");
+const isDiscussionTab = computed(() => tab.value === "обговорення");
 
 function setTab(t: string) {
   tab.value = t;
+
+  router.replace({
+    query: {
+      вкладка: t,
+    },
+  });
 }
 
 onBeforeMount(() => {
   Pak.fetchPakByName({ name: routePakName.value });
+
+  const query = route.query as { вкладка: string };
+  if (query.вкладка) {
+    tab.value = query.вкладка;
+  }
 });
 </script>
 
@@ -59,12 +71,12 @@ onBeforeMount(() => {
         </span>
       </UiSubheader>
       <UiTabs with-subheader>
-        <UiTab @click="setTab('details')" :active="isDetailsTab">Деталі</UiTab>
-        <UiTab @click="setTab('versions')" :active="isVersionsTab">
+        <UiTab @click="setTab('деталі')" :active="isDetailsTab">Деталі</UiTab>
+        <UiTab @click="setTab('версії')" :active="isVersionsTab">
           Версії
         </UiTab>
-        <UiTab @click="setTab('reviews')" :active="isReviewsTab">Відгуки</UiTab>
-        <UiTab @click="setTab('discussion')" :active="isDiscussionTab">
+        <UiTab @click="setTab('відгуки')" :active="isReviewsTab">Відгуки</UiTab>
+        <UiTab @click="setTab('обговорення')" :active="isDiscussionTab">
           Обговорення
         </UiTab>
       </UiTabs>
@@ -86,36 +98,54 @@ onBeforeMount(() => {
             </div>
           </template>
           <template v-if="isVersionsTab">
-            <UiThread :thread="pak.versionsThread">
-              <template #default="{ thread }">
-                <UiPakVersionList>
-                  <template
-                    v-for="pakVersion in thread.filteredItems"
-                    :key="pakVersion.data.id"
+            <div class="PageGrid">
+              <div class="PageGridLeft">
+                <div class="PageBlock empty">
+                  <UiThread :thread="pak.versionsThread">
+                    <template #default="{ thread }">
+                      <UiPakVersionList>
+                        <template
+                          v-for="pakVersion in thread.filteredItems"
+                          :key="pakVersion.data.id"
+                        >
+                          <UiPakVersionItem :pak="pakVersion" />
+                        </template>
+                      </UiPakVersionList>
+                    </template>
+                    <template #loading>
+                      <div class="UiPakVersionListLoading">Завантаження...</div>
+                    </template>
+                    <template #error>
+                      <div class="UiPakVersionListError">Помилка!</div>
+                    </template>
+                    <template #loadingNext>
+                      <div class="UiPakVersionListLoadingNext">
+                        Завантаження...
+                      </div>
+                    </template>
+                    <template #errorNext="{ error }">
+                      <div class="UiPakVersionListErrorNext">{{ error }}</div>
+                    </template>
+                    <template #noMore>
+                      <div class="UiPakVersionListNoMore">Більше немає...</div>
+                    </template>
+                    <template #empty>
+                      <div class="UiPakVersionListEmpty">Пусто...</div>
+                    </template>
+                  </UiThread>
+                </div>
+              </div>
+              <div class="PageGridRight">
+                <div class="PageBlock">
+                  <RouterLink
+                    :to="pak.CreateVersionURLPath"
+                    class="PageGridButton"
                   >
-                    <UiPakVersionItem :pak="pakVersion" />
-                  </template>
-                </UiPakVersionList>
-              </template>
-              <template #loading>
-                <div class="UiPakVersionListLoading">Завантаження...</div>
-              </template>
-              <template #error>
-                <div class="UiPakVersionListError">Помилка!</div>
-              </template>
-              <template #loadingNext>
-                <div class="UiPakVersionListLoadingNext">Завантаження...</div>
-              </template>
-              <template #errorNext="{ error }">
-                <div class="UiPakVersionListErrorNext">{{ error }}</div>
-              </template>
-              <template #noMore>
-                <div class="UiPakVersionListNoMore">Більше немає...</div>
-              </template>
-              <template #empty>
-                <div class="UiPakVersionListEmpty">Пусто...</div>
-              </template>
-            </UiThread>
+                    Створити версію
+                  </RouterLink>
+                </div>
+              </div>
+            </div>
           </template>
           <template v-if="isReviewsTab">
             <div class="PageBlock empty">Цей пак немає відгуків.</div>

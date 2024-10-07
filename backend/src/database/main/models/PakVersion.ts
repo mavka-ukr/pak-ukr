@@ -6,6 +6,7 @@ export interface PakVersion extends Model {
   is_deleted: boolean;
   name: string;
   description: string;
+  file_id: number;
 }
 
 export const PakVersionDb = {

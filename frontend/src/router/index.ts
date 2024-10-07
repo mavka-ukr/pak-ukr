@@ -4,6 +4,7 @@ import PakView from "@/views/PakView.vue";
 import YaRedirectView from "@/views/YaRedirectView.vue";
 import UserView from "@/views/UserView.vue";
 import CreateView from "@/views/CreateView.vue";
+import CreateVersionView from "@/views/CreateVersionView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,6 +28,11 @@ const router = createRouter({
       path: encodeURI("/:name"),
       name: "pak",
       component: PakView,
+    },
+    {
+      path: encodeURI("/:name/створити-версію"),
+      name: "create-version",
+      component: CreateVersionView,
     },
     {
       path: encodeURI("/автор/:username"),

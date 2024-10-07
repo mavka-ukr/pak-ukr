@@ -44,6 +44,8 @@ defineProps<{
   border: 1px solid rgb(var(--ui-border-rgb));
   background: white;
 
+  padding: 1rem;
+
   @media (max-width: 1024px) {
     border-left: 0;
     border-right: 0;
@@ -52,8 +54,6 @@ defineProps<{
       border-top: 0;
     }
   }
-
-  padding: 1rem;
 
   .UiPakItemHead {
     display: flex;
