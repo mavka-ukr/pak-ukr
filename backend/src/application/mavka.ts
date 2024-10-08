@@ -2,10 +2,7 @@ import axios from "axios";
 
 export interface MavkaUser {
   id: number;
-  father_name: string;
-  first_name: string;
-  family_name: string;
-  family_mother_name: string;
+  name: string;
   avatar_url: string | null;
 }
 
@@ -22,10 +19,7 @@ export async function getMavkaUserByToken(token: string): Promise<MavkaUser> {
           "@": "Me";
           type: "person";
           id?: number;
-          father_name?: string;
           name?: string;
-          family_name?: string;
-          family_mother_name?: string;
           photo_url?: string | null;
           email?: string;
         },
@@ -35,10 +29,7 @@ export async function getMavkaUserByToken(token: string): Promise<MavkaUser> {
   }
   return {
     id: me.id,
-    father_name: me.father_name || "",
-    first_name: me.name || "",
-    family_name: me.family_name || "",
-    family_mother_name: me.family_mother_name || "",
+    name: me.name || "",
     avatar_url: me.photo_url || null,
   };
 }

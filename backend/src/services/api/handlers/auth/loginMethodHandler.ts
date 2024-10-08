@@ -24,9 +24,7 @@ async function loginMethodHandler(
       await UserDb.update(
         user,
         {
-          father_name: mavkaUser.father_name,
-          first_name: mavkaUser.first_name,
-          family_name: mavkaUser.family_name,
+          name: mavkaUser.name,
           avatar_url: mavkaUser.avatar_url,
         },
         trx,
@@ -35,9 +33,7 @@ async function loginMethodHandler(
       user = await UserDb.save(
         {
           mavka_id: mavkaUser.id,
-          father_name: mavkaUser.father_name,
-          first_name: mavkaUser.first_name,
-          family_name: mavkaUser.family_name,
+          name: mavkaUser.name,
           avatar_url: mavkaUser.avatar_url,
           posts_count: 0,
           rating: 0,

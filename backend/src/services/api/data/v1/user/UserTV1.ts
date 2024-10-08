@@ -104,7 +104,7 @@ export class UserV1 extends UserTV1 {
   public static makeHavingData(user: User, makeData: MakeData): UserTV1 {
     const userV1 = new UserV1();
     userV1.id = user.id;
-    userV1.name = user.first_name;
+    userV1.name = user.name;
     userV1.username = `а${user.id}`;
     userV1.avatarUrl = user.avatar_url;
     return userV1;
