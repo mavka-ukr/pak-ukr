@@ -7,7 +7,7 @@ import { computed } from "vue";
 import { CONFIG } from "@/application/config";
 
 const loginUrl = computed(() => {
-  return `https://я.мавка.укр/oauth/authorize?client_id=1&redirect_uri=${CONFIG.PAK_APP_ULR}/ya&response_type=code&scope=id father_name name family_name family_mother_name photo email`;
+  return `https://паспорт.мавка.укр/oauth/authorize?client_id=1&redirect_uri=${CONFIG.PAK_APP_ULR}/handle-mavka-oauth&response_type=code&scope=id father_name name family_name family_mother_name photo email`;
 });
 
 function logout() {

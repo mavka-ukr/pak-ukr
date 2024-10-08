@@ -20,8 +20,8 @@ const router = createRouter({
       component: CreateView,
     },
     {
-      path: encodeURI("/ya"),
-      name: "ya",
+      path: encodeURI("/handle-mavka-oauth"),
+      name: "handle-mavka-oauth",
       component: YaRedirectView,
     },
     {

@@ -5,6 +5,9 @@ import UiContent from "@/components/layout/UiContent.vue";
 import UiSubheader from "@/components/layout/UiSubheader.vue";
 import { Pak } from "@/application";
 import { reactive, ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const data = reactive({
   name: "",
@@ -17,7 +20,8 @@ const isSubmitting = ref(false);
 function submit() {
   isSubmitting.value = true;
   Pak.createPak(data)
-    .then(() => {
+    .then((pak) => {
+      router.replace(encodeURI(`/${pak.data.name}`));
       isSubmitting.value = false;
     })
     .catch(() => {

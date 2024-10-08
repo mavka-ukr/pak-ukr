@@ -11,7 +11,7 @@ export interface MavkaUser {
 
 export async function getMavkaUserByToken(token: string): Promise<MavkaUser> {
   const me = await axios
-    .get("https://я.мавка.укр/api/getMe", {
+    .get("https://паспорт.мавка.укр/api/getMe", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -48,7 +48,7 @@ export async function getMavkaTokenByCode(
   redirectUri: string,
 ): Promise<string> {
   const token = await axios
-    .postForm("https://я.мавка.укр/oauth/token", {
+    .postForm("https://паспорт.мавка.укр/oauth/token", {
       grant_type: "authorization_code",
       client_id: "1",
       client_secret: "WiJQV1jLw3gNnCgIPDtEaTA01ZyntnkqLr3PKuGD",

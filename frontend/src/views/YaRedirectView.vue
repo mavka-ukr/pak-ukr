@@ -11,7 +11,7 @@ onMounted(() => {
   const code = route.query.code as string;
   invokeLogin({
     mavkaCode: code,
-    redirectUri: `${CONFIG.PAK_APP_ULR}/ya`,
+    redirectUri: `${CONFIG.PAK_APP_ULR}/handle-mavka-oauth`,
   }).then((authR) => {
     console.log(authR);
     setSessionTokenToStorage(authR.token);

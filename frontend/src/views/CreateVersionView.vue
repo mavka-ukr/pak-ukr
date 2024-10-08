@@ -6,9 +6,10 @@ import UiSubheader from "@/components/layout/UiSubheader.vue";
 import { Pak } from "@/application";
 import { computed, onBeforeMount, reactive, ref } from "vue";
 import PakPak from "@/application/models/PakPak";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 const route = useRoute();
+const router = useRouter();
 
 const routePakName = computed(() => route.params.name as string);
 const pak = computed(() => {
@@ -33,7 +34,12 @@ function submit() {
     isSubmitting.value = true;
     // todo: upload file
     Pak.createPakVersion(pak.value.data.id, data)
-      .then(() => {
+      .then((pakVersion) => {
+        if (pak.value) {
+          router.replace(
+            encodeURI(`/${pak.value.data.name}/${pakVersion.data.name}`),
+          );
+        }
         isSubmitting.value = false;
       })
       .catch(() => {
